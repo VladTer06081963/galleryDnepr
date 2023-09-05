@@ -1,8 +1,6 @@
 <!DOCTYPE HTML>
 <!--
-	Multiverse by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	
 -->
 <html>
 	<head>
@@ -33,8 +31,8 @@
 						<% for(let i =0; i<12; i++) { %>
 							<article class="thumb">
 								<a href="images/fulls/<%= (i+1).toString().padStart(2, '0') %>.jpg" class="image"><img src="images/thumbs/<%= (i+1).toString().padStart(2, '0') %>.jpg" alt="" /></a>
-								<h2><%= headings[i] %></h2>
-								<p><%= paragraphs[i] %></p>
+								<h2><%= h2[i] %></h2>
+								<p><%= p[i] %></p>
 							</article> 
 						<% } %>
 			
@@ -99,11 +97,15 @@
 
 				
 				<% if (isLoggedIn) { %>
-					
-					<h2>Как загрузить фотографию</h2>
-						 <p>Нажмите выбрать файл, выберите фотографию, выберите какой номер фотографии вы хотите заменить и нажмите кнопку загрузки. 
+					<h2>Текущий текст</h2>
+					 <!-- <h2>Как загрузить фотографию</h2>  -->
+						 <!-- <p>Нажмите выбрать файл, выберите фотографию, выберите какой номер фотографии вы хотите заменить и нажмите кнопку загрузки. 
 						Маленькое фото- вы видите в общем альбоме сайта, Большое фото - это увеличенное фото для просмотра после нажатия на фотографию.
-						Всего в альбоме 12 фотографий, не оставляйте поле - колличество фотографий пустым. ФОТОГРАФИИ ТОЛЬКО В ФОРМАТЕ - jpg !!! </p> 
+						Всего в альбоме 12 фотографий, не оставляйте поле - колличество фотографий пустым. ФОТОГРАФИИ ТОЛЬКО В ФОРМАТЕ - jpg !!! </p>   -->
+
+                        <span id="currentText"></span>
+						<!-- HTML -->
+
 						<% } else { %>			
 	
 							<h2>Follow me on ...</h2>
@@ -130,23 +132,41 @@
                 <h2>Get in touch</h2>
 				<!-- Здесь может быть форма контакта или что-то еще -->
 				
-                <form method="post" action="#">
-					<div class="fields">
-						<div class="field half">
-							<input type="text" name="name" id="name" placeholder="Name" />
-						</div>
-						<div class="field half">
-							<input type="text" name="email" id="email" placeholder="Email" />
-						</div>
-						<div class="field">
-							<textarea name="message" id="message" rows="4" placeholder="Message"></textarea>
-						</div>
-					</div>
-					<ul class="actions">
-						<li><input type="submit" value="Send" class="primary" /></li>
-						<li><input type="reset" value="Reset" /></li>
-					</ul>
-				</form> 
+				<% if (isLoggedIn) { %>
+					<form id="updateForm">
+						<label for="articleIndex">Индекс article:</label>
+						<input type="number" id="articleIndex" name="articleIndex" min="1" max="12" placeholder="1">						
+						<label for="elementType">Выберите элемент для изменения:</label>
+						<select id="elementType" name="elementType">
+							<option value="h2">h2</option>
+							<option value="p">p</option>
+						</select>
+						
+						<label for="newText">Новый текст:</label>
+						<input type="text" id="newText" name="newText">
+						
+						<button type="submit">Обновить</button>
+					</form>
+					<% } else { %>	
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field half">
+									<input type="text" name="name" id="name" placeholder="Name" />
+								</div>
+								<div class="field half">
+									<input type="text" name="email" id="email" placeholder="Email" />
+								</div>
+								<div class="field">
+									<textarea name="message" id="message" rows="4" placeholder="Message"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send" class="primary" /></li>
+								<li><input type="reset" value="Reset" /></li>
+							</ul>
+						</form> 
+
+						<% } %>
             </section>
         </div>
     </div>
