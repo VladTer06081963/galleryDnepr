@@ -55,14 +55,14 @@
                             <div class="fields">
                                 <div class="field-half">
                                     <input type="file" name="image">
-                                    <input type="number" name="number" min="1" max="12" placeholder="1">
+                                    <input type="number" name="number" min="1" max="12" placeholder="0">
                                     <button type="submit">Большое фото</button>
                                 </div>
 							</form>
 							<form action="/uploadthumbs" method="post" enctype="multipart/form-data">
 								<div class="field-half">
 									<input type="file" name="image">
-									<input type="number" name="number" min="1" max="12" placeholder="1">
+									<input type="number" name="number" min="1" max="12" placeholder="0">
 									<button type="submit">Маленькое фото</button>
 								</div>
 							</div>
@@ -98,15 +98,18 @@
 				
 				<% if (isLoggedIn) { %>
 					<h2>Текущий текст</h2>
-					 <!-- <h2>Как загрузить фотографию</h2>  -->
-						 <!-- <p>Нажмите выбрать файл, выберите фотографию, выберите какой номер фотографии вы хотите заменить и нажмите кнопку загрузки. 
-						Маленькое фото- вы видите в общем альбоме сайта, Большое фото - это увеличенное фото для просмотра после нажатия на фотографию.
-						Всего в альбоме 12 фотографий, не оставляйте поле - колличество фотографий пустым. ФОТОГРАФИИ ТОЛЬКО В ФОРМАТЕ - jpg !!! </p>   -->
+					 
 
                         <span id="currentText"></span>
 						<!-- HTML -->
 
-						<% } else { %>			
+						<% } else { %>	
+							 <h2>Как загрузить фотографию</h2> 
+							 <h3>зайдите как Администратор</h3>
+						 <p>Нажмите выбрать файл, выберите фотографию, выберите какой номер фотографии вы хотите заменить и нажмите кнопку загрузки. 
+						Маленькое фото- вы видите в общем альбоме сайта, Большое фото - это увеличенное фото для просмотра после нажатия на фотографию.
+						Всего в альбоме 12 фотографий, не оставляйте поле - колличество фотографий пустым. ФОТОГРАФИИ ТОЛЬКО В ФОРМАТЕ - jpg !!! </p> 
+						<p>Выбирая h2 или p, а также нумерацию от 1 до 12 меняйте текст. Меняемый тект читаете в центре поля</p> 
 	
 							<h2>Follow me on ...</h2>
 							<ul class="icons">
@@ -129,13 +132,14 @@
         </div>
         <div>
             <section>
-                <h2>Get in touch</h2>
+                <!-- <h2>Get in touch</h2> -->
 				<!-- Здесь может быть форма контакта или что-то еще -->
 				
 				<% if (isLoggedIn) { %>
+					<h2>Редактор текста</h2>
 					<form id="updateForm">
 						<label for="articleIndex">Индекс article:</label>
-						<input type="number" id="articleIndex" name="articleIndex" min="1" max="12" placeholder="1">						
+						<input type="number" id="articleIndex" name="articleIndex" min="1" max="12" placeholder="0">						
 						<label for="elementType">Выберите элемент для изменения:</label>
 						<select id="elementType" name="elementType">
 							<option value="h2">h2</option>
@@ -148,7 +152,8 @@
 						<button type="submit">Обновить</button>
 					</form>
 					<% } else { %>	
-						<form method="post" action="#">
+						<h2>Get in touch</h2>
+						<form method="get" action="#">
 							<div class="fields">
 								<div class="field half">
 									<input type="text" name="name" id="name" placeholder="Name" />
