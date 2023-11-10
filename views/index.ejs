@@ -7,45 +7,50 @@
 		<title><%= title %></title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="icon" href="images/favicon.ico" type="image/x-icon">
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
 
 		<!-- Wrapper -->
-			<div id="wrapper">
+		<div id="wrapper">
 
 				<!-- Header -->
 					<header id="header">
-						<h1><a href="/"><strong>Tabaco</strong></a></h1>
-						<h1><a href="https://pnikolenko3d.netlify.app"><strong>no SMOKING no</a></h1>
+						<h1><a href="/"><strong>Dnipro</strong></a></h1>
+						<h1><a href="#"><strong>is Ukraine</a></h1>
 						<nav>
 							<ul>
-								<li><a href="#footer" class="icon solid fa-info-circle">About</a></li>
+								<li><a href="#footer" class="icon solid fa-info-circle">Admin</a></li>
 							</ul>
 						</nav>
+						<!-- ------------------- -->
+		                <!-- <link rel="stylesheet" href="style.css"> -->
+		                <!-- --------------------- -->
 					</header>
 
-				<!-- Main -->
-					<div id="main">
-						<% for(let i =0; i<12; i++) { %>
+				<!-- Main  -->
+
+					<div id="main"> 
+					 <% for(let i =0; i<12; i++) { %>
 							<article class="thumb">
 								<a href="images/fulls/<%= (i+1).toString().padStart(2, '0') %>.jpg" class="image"><img src="images/thumbs/<%= (i+1).toString().padStart(2, '0') %>.jpg" alt="" /></a>
 								<h2><%= h2[i] %></h2>
 								<p><%= p[i] %></p>
 							</article> 
-						<% } %>
+					 <% } %>
 			
-					</div>
-					<script src="index.js"></script>
+					</div> 
+					<script src="index.js"></script> 
 
-				<!-- Footer -->
-<!-- Footer -->
-<footer id="footer" class="panel">
-    <div class="inner split">
-        <div>
-            <section>
-                <div class="<%= isLoggedIn ? 'admin-logged-in' : 'admin-logged-out' %>">
+ <!-- Footer -->
+
+				<footer id="footer" class="panel">
+   				 <div class="inner split">
+       				 <div>
+            			<section>
+                		    <div class="<%= isLoggedIn ? 'admin-logged-in' : 'admin-logged-out' %>">
                     <% if (isLoggedIn) { %>
                         <p>Добро пожаловать, админ!</p>
                         
@@ -89,8 +94,8 @@
 					...
 				<% } %>
 
-            </section>
-        </div>
+            			</section>
+        			 </div>
         <div>
             <section>
                
@@ -174,8 +179,10 @@
 						<% } %>
             </section>
         </div>
-    </div>
-</footer>
+   				 </div>
+				</footer>
+
+
 <!-- Остальные скрипты и т. д. ... -->
 
 
