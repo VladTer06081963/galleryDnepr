@@ -84,6 +84,18 @@ app.get("/index.html", (req, res) => {
   });
 });
 
+app.get("/index", (req, res) => {
+  const isLoggedIn = !!req.session.userId;
+  // title: "Dnepr";
+  res.render("index", {
+    h2,
+    p,
+    title: "Dnepr",
+    showMainDiv: false,
+    isLoggedIn,
+  });
+});
+
 app.get("/", (req, res) => {
   const isLoggedIn = !!req.session.userId;
 
