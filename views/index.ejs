@@ -19,19 +19,20 @@
 				<!-- Header -->
 					<header id="header">
 						<h1><a href="/"><strong>Dnipro</strong></a></h1>
-						<h1><a href="#"><strong>is Ukraine</a></h1>
+						<h1><a href="/index.html"><strong>is Ukraine</a></h1>
 						<nav>
 							<ul>
 								<li><a href="#footer" class="icon solid fa-info-circle">Admin</a></li>
 							</ul>
 						</nav>
 						<!-- ------------------- -->
-		                <!-- <link rel="stylesheet" href="style.css"> -->
+		                <link rel="stylesheet" href="style.css">
 		                <!-- --------------------- -->
 					</header>
 
 				<!-- Main  -->
 
+				<% if (showMainDiv) { %>
 					<div id="main"> 
 					 <% for(let i =0; i<12; i++) { %>
 							<article class="thumb">
@@ -42,6 +43,39 @@
 					 <% } %>
 			
 					</div> 
+
+
+					<% } else { %>
+						
+						<div class="wrapper">
+							<div class="container">
+								<h1>Днепр-мой любимый город</h1>
+								<h3>Крупнейший город центральной Украины</h3>
+								<div class="photo"></div>
+								<h3>Органный зал в Днепре</h3>
+								<div class="organ">
+						
+									<div class="organ__photo"></div>
+									<div class="organ__about">
+										<p>В 1988 году открылся Днепропетровский дом органной и камерной музыки.Орган имеет 30 регистров, два мануала (Hauptwerk и Brustwerk), педаль, швеллер. Общее количество труб – 2074, трактура регистров, мануалов и педали механические (шлейфлады). Орган универсальный, по звучанию подходит для исполнения барочной музыки.     
+										</p>
+									</div>
+								</div>
+								<h3>Достопримечательности города</h3>
+								<div class="look">
+									<div class="look__photo_1" onclick="openModal('image1')" alt="шар желаний на самой длинной набережной Евроаы"></div>
+									<div class="look__photo_2" onclick="openModal('image2')" alt="Екатеринославский бульвар"></div>
+									<div class="look__photo_3" onclick="openModal('image3')" alt="Центр Минора"></div>
+									<div class="look__photo_4" onclick="openModal('image4')" alt="Днепр река Украины"></div>
+									<div class="look__photo_5" onclick="openModal('image5')" alt="Парки Днепра"></div>
+									<div class="look__photo_6" onclick="openModal('image6')" alt="Преображенский собор"></div>
+								</div>
+						
+							</div>
+						   </div>
+					  <% } %>
+
+
 					<script src="index.js"></script> 
 
  <!-- Footer -->

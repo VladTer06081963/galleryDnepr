@@ -69,11 +69,28 @@ app.set("views", path.join(__dirname, "views"));
 const upload = multer({ storage: multer.memoryStorage() });
 
 //----------
+app.get("/index.html", (req, res) => {
+  const isLoggedIn = !!req.session.userId;
+  // title: "Dnepr";
+  res.render("index", {
+    h2,
+    p,
+    title: "Dnepr",
+    showMainDiv: false,
+    isLoggedIn,
+  });
+});
 
 app.get("/", (req, res) => {
   const isLoggedIn = !!req.session.userId;
 
-  res.render("index", { h2, p, title: "my Town", isLoggedIn });
+  res.render("index", {
+    h2,
+    p,
+    title: "my Town",
+    showMainDiv: true,
+    isLoggedIn,
+  });
 });
 
 app.get("/admin-login", (req, res) => {
