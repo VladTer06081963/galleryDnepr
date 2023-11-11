@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
     //console.log(data);
     currentTextElement.innerText =
       data.currentText || "Выберите Индекс article от 1 до 12:";
-    //console.log(currentTextElement);
   };
 
   articleIndexInput.addEventListener("change", updateCurrentText);
