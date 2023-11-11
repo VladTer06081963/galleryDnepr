@@ -9,6 +9,7 @@ const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
 const basicAuth = require("basic-auth");
+const mailer = require("./mailer");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -65,6 +66,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json()); //для анализа application/json
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 const upload = multer({ storage: multer.memoryStorage() });
 
@@ -90,6 +93,7 @@ app.get("/", (req, res) => {
     title: "my Town",
     showMainDiv: true,
     isLoggedIn,
+    // showContactForm,
   });
 });
 
@@ -167,6 +171,29 @@ app.get("/currentText", (req, res) => {
   } else {
     res.status(404).json({ error: "Text not found" });
   }
+});
+
+app.post("/submit", (req, res) => {
+  const { name, email, message } = req.body;
+
+  // Используем функцию из модуля mailer.js
+  mailer.sendEmail(name, email, message, (error, info) => {
+    if (error) {
+      console.error(error);
+      res.redirect("/error");
+    } else {
+      console.log("Email sent: " + info.response);
+      res.redirect("/thank-you");
+    }
+  });
+});
+
+app.get("/error", (req, res) => {
+  res.render("error");
+});
+
+app.get("/thank-you", (req, res) => {
+  res.render("thank-you");
 });
 
 app.use(router);
