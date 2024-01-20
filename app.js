@@ -24,7 +24,7 @@ const saveData = (data) => {
 // Функция для загрузки данных
 const loadData = () => {
   try {
-    const data = fs.readFileSync("data.json", "utf8");
+    const data = fs.readFileSync("data.json", "utf-8");
     return JSON.parse(data);
   } catch (err) {
     console.error("Error reading the file:", err);
@@ -133,10 +133,15 @@ app.get("/logout", (req, res) => {
 app.post("/uploadfulls", authMiddleware, upload.single("image"), (req, res) => {
   const userId = req.session.userId;
   const number = String(req.body.number).padStart(2, "0");
-  const filePath = `./public/images/fulls/${number}${path.extname(
-    req.file.originalname
-  )}`;
-  fs.writeFileSync(filePath, req.file.buffer);
+
+  // Проверяем, загружен ли файл
+  if (req.file) {
+    const filePath = `./public/images/fulls/${number}${path.extname(
+      req.file.originalname
+    )}`;
+    fs.writeFileSync(filePath, req.file.buffer);
+  }
+
   res.redirect("/");
 });
 
@@ -147,10 +152,15 @@ app.post(
   (req, res) => {
     const userId = req.session.userId;
     const number = String(req.body.number).padStart(2, "0");
-    const filePath = `./public/images/thumbs/${number}${path.extname(
-      req.file.originalname
-    )}`;
-    fs.writeFileSync(filePath, req.file.buffer);
+
+    // Проверяем, загружен ли файл
+    if (req.file) {
+      const filePath = `./public/images/thumbs/${number}${path.extname(
+        req.file.originalname
+      )}`;
+      fs.writeFileSync(filePath, req.file.buffer);
+    }
+
     res.redirect("/");
   }
 );
